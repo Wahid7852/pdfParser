@@ -15,7 +15,8 @@ def parse_pdf(pdf_path, api_url):
 
 regex_pattern = r"(?<=\n)(.*?)(?=## 1 )|##\s\d+[\.\d]*\s.*?(?=\n##\s\d+|\Z)"
 api_url = "https://das-scales-lopez-casio.trycloudflare.com/parse_document/pdf" # not static, bound to change as per Local LLM-Parser
-pdf_directory = "pdfs"
+pdf_directory = "pdfs/"
+csv_directory = "csvs/"
 
 for file in os.listdir(pdf_directory):
     if file.endswith(".pdf"):
@@ -38,7 +39,7 @@ for file in os.listdir(pdf_directory):
                 else:
                     sections["Title"] = content.strip()
 
-            output_csv = os.path.join(pdf_directory, f"{file[:-4]}.csv")
+            output_csv = os.path.join(csv_directory, f"{file[:-4]}.csv")
             with open(output_csv, 'w', newline='') as csvfile:
                 writer = csv.writer(csvfile)
 
