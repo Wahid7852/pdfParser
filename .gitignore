@@ -1,0 +1,6 @@
+__pycache__/
+pdfs/
+csvs/
+
+*.csv
+*.pdf
